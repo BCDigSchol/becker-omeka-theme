@@ -22,7 +22,15 @@ $sortLinks[__('Date Added')] = 'added';
             <?php echo link_to_collection($collectionImage, array('class' => 'image')); ?>
         <?php endif; ?>
 
+        <?php
+        /*
         <h2><?php echo link_to_collection(); ?></h2>
+        */
+        ?>
+
+        <p class="view-items-link"><h2><?php echo link_to_items_browse(__(metadata('collection', array('Dublin Core', 'Title'))), array('collection' => metadata('collection', 'id'))); ?></h2></p>
+        <?php fire_plugin_hook('public_collections_browse_each', array('view' => $this, 'collection' => $collection)); ?>
+
 
         <?php if (metadata('collection', array('Dublin Core', 'Description'))): ?>
         <div class="collection-description">
@@ -39,10 +47,13 @@ $sortLinks[__('Date Added')] = 'added';
         </div>
         <?php endif; ?>
 
+        <?php
+        /*
         <p class="view-items-link"><?php echo link_to_items_browse(__('View the items in %s', metadata('collection', array('Dublin Core', 'Title'))), array('collection' => metadata('collection', 'id'))); ?></p>
 
         <?php fire_plugin_hook('public_collections_browse_each', array('view' => $this, 'collection' => $collection)); ?>
-
+        */
+        ?>
     </div><!-- end class="collection" -->
 <?php endforeach; ?>
 </div>
