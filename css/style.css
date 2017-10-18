@@ -1521,3 +1521,20 @@ Some of these are overwrites, others are new classes
   margin: 15px auto 0;
 }
 
+
+/* CUSTOM TEXT ON HOMEPAGE STYLES */
+
+.custom_text {
+  width: 70%;
+  margin: -205px auto 0;
+  padding: 45px;
+  background-color: rgba(255,255,255,.75);
+  text-align: justify;
+}
+
+.custom_text p {
+  margin: 0 auto 15px;
+  width: 100%;
+  color: #424242;
+  line-height: 1.5;
+}

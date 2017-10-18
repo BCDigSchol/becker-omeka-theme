@@ -18,6 +18,17 @@ queue_js_string('
 ?>
 <?php echo head(array('bodyid'=>'home')); ?>
 
+<!-- CUSTOM TEXT ADDED HERE -->
+
+<div class="custom_text">
+    <p>The Becker Archive contains approximately 650 hitherto unexhibited and undocumented drawings by Joseph Becker and his colleagues, nineteenth-century artists who worked as artist-reporters for Frank Leslie’s Illustrated Weekly observing, drawing, and sending back for publication images of the Civil War, the construction of the railroads, the laying of the transatlantic cable in Ireland, the Chinese in the West, the Indian wars, the Chicago fire, and numerous other aspects of nineteenth-century American culture. These “first-hand” drawings, most of which were never published, document in lively and specific ways key developments in the history of America as it struggled to establish its national identity. </p>
+
+    <p style="text-align: right;"><em>Sheila Gallagher and Judith Bookbinder <br />
+    Co-Directors, The Becker Collection </em></p>
+</div>
+
+<!-- END CUSTOM TEXT -->
+
 <!-- Featured Item -->
 <div id="featured">
     <?php if (get_theme_option('Display Featured Item') !== '0' && count(get_random_featured_items()) > 0): ?>
