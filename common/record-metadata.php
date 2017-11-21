@@ -11,7 +11,7 @@ if(isset($elementsForDisplay['Item Type Metadata'])) {
 }
 $wantedElements['Title'] = $elementsForDisplay['Dublin Core']['Title'];
 $wantedElements['Abstract'] = $elementsForDisplay['Dublin Core']['Abstract'];
-$wantedElements['Creator'] = $elementsForDisplay['Dublin Core']['Creator'];
+$wantedElements['Author'] = $elementsForDisplay['Dublin Core']['Creator'];
 $wantedElements['Date'] = $elementsForDisplay['Dublin Core']['Date'];
 $wantedElements['Transcription'] = $elementsForDisplay['Dublin Core']['Has Part'];
 $wantedElements ['Subject'] = $elementsForDisplay ['Dublin Core'] ['Subject'];
@@ -24,7 +24,7 @@ $wantedElements ['Coordinates'] = $elementsForDisplay ['Dublin Core'] ['Spatial 
 /*$wantedElements ['Temporal Coverage'] = $elementsForDisplay ['Dublin Core'] ['Temporal Coverage'];*/
 $wantedElements['Source'] = $elementsForDisplay['Dublin Core']['Source'];
 $wantedElements['URI'] = $elementsForDisplay['Dublin Core']['Relation'];
-$wantedElements['Identifier'] = $elementsForDisplay['Dublin Core']['Identifier'];
+$wantedElements['Ref. Number'] = $elementsForDisplay['Dublin Core']['Identifier'];
 /*$wantedElements['PMID'] = $elementsForDisplay['Dublin Core']['Alternative Title'];*/
 ?>
 
