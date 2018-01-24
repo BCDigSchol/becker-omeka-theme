@@ -11,7 +11,7 @@ if(isset($elementsForDisplay['Item Type Metadata'])) {
 }
 $wantedElements['Title'] = $elementsForDisplay['Dublin Core']['Title'];
 $wantedElements['Abstract'] = $elementsForDisplay['Dublin Core']['Abstract'];
-$wantedElements['Author'] = $elementsForDisplay['Dublin Core']['Creator'];
+$wantedElements['Artist'] = $elementsForDisplay['Dublin Core']['Creator'];
 $wantedElements['Date'] = $elementsForDisplay['Dublin Core']['Date'];
 $wantedElements['Transcription'] = $elementsForDisplay['Dublin Core']['Has Part'];
 $wantedElements ['Subject'] = $elementsForDisplay ['Dublin Core'] ['Subject'];
