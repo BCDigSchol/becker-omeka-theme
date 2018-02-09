@@ -2,14 +2,41 @@
 if (!empty($formActionUri)):
     $formAttributes['action'] = $formActionUri;
 else:
-    $formAttributes['action'] = url(
-        array(
+    $formAttributes['action'] = url([
             'controller' => 'items',
             'action'     => 'browse'
-        )
+        ]
     );
 endif;
 $formAttributes['method'] = 'GET';
+
+
+$search_relation_options = [
+    'is exactly'       => __('is exactly'),
+    'does not contain' => __('does not contain'),
+    'starts with'      => __('starts with'),
+    'ends with'        => __('ends with')
+];
+
+$select_whitelist = [
+    'Has Part',
+    'Description',
+    'Coverage',
+    'Extent',
+    'Type',
+    'Title',
+    'Abstract',
+    'Creator',
+    'Date',
+    'Subject',
+    'Condition',
+    'Place',
+    'Medium',
+    'Dimensions',
+    'Genre',
+    'Identifier'
+];
+
 ?>
 
     <form <?php echo tag_attributes($formAttributes); ?>>
@@ -20,7 +47,7 @@ $formAttributes['method'] = 'GET';
                 echo $this->formText(
                     'search',
                     @$_REQUEST['search'],
-                    array('id' => 'keyword-search', 'size' => '40')
+                    ['id' => 'keyword-search', 'size' => '40']
                 );
                 ?>
             </div>
@@ -36,7 +63,7 @@ $formAttributes['method'] = 'GET';
                 if (!empty($_GET['advanced'])) {
                     $search = $_GET['advanced'];
                 } else {
-                    $search = array(array('field' => '', 'type' => '', 'value' => ''));
+                    $search = [['field' => '', 'type' => '', 'value' => '']];
                 }
 
                 //Here is where we actually build the search form
@@ -52,68 +79,58 @@ $formAttributes['method'] = 'GET';
                         echo $this->formSelect(
                             "advanced[$i][joiner]",
                             @$rows['joiner'],
-                            array(
-                                'title' => __("Search Joiner"),
+                            [
+                                'title' => __('Search Joiner'),
                                 'id'    => null,
                                 'class' => 'advanced-search-joiner'
-                            ),
-                            array(
+                            ],
+                            [
                                 'and' => __('AND'),
                                 'or'  => __('OR'),
-                            )
+                            ]
                         );
 
                         // Filter out and rename element select options.
                         $original_select_options = get_table_options(
                             'Element',
                             null,
-                            array(
-                                'record_types' => array('Item', 'All'),
+                            [
+                                'record_types' => ['Item', 'All'],
                                 'sort'         => 'orderBySet'
-                            )
+                            ]
                         );
-                        $filtered_select_options = filter_select_options($original_select_options);
-                        $renamed_select_options = rename_select_options($filtered_select_options);
+                        $filtered_select_options = bc_filter_select_options($original_select_options, $select_whitelist);
+                        $renamed_select_options = bc_rename_select_options($filtered_select_options);
 
                         echo $this->formSelect(
                             "advanced[$i][element_id]",
                             @$rows['element_id'],
-                            array(
-                                'title' => __("Search Field"),
+                            [
+                                'title' => __('Search Field'),
                                 'id'    => null,
                                 'class' => 'advanced-search-element'
-                            ),
+                            ],
                             $renamed_select_options
                         );
                         echo $this->formSelect(
                             "advanced[$i][type]",
                             @$rows['type'],
-                            array(
-                                'title' => __("Search Type"),
+                            [
+                                'title' => __('Search Type'),
                                 'id'    => null,
                                 'class' => 'advanced-search-type'
-                            ),
-                            label_table_options(
-                                array(
-                                    'contains'         => __('contains'),
-                                    'does not contain' => __('does not contain'),
-                                    'is exactly'       => __('is exactly'),
-                                    'is empty'         => __('is empty'),
-                                    'is not empty'     => __('is not empty'),
-                                    'starts with'      => __('starts with'),
-                                    'ends with'        => __('ends with')
-                                )
-                            )
+                            ],
+                            bc_label_table_options($search_relation_options)
                         );
                         echo $this->formText(
                             "advanced[$i][terms]",
                             @$rows['terms'],
-                            array(
+                            [
                                 'size'  => '20',
-                                'title' => __("Search Terms"),
+                                'title' => __('Search Terms'),
                                 'id'    => null,
                                 'class' => 'advanced-search-terms'
-                            )
+                            ]
                         );
                         ?>
                         <button type="button" class="remove_search" disabled="disabled" style="display: none;"><?php echo __(
@@ -132,7 +149,7 @@ $formAttributes['method'] = 'GET';
                 echo $this->formSelect(
                     'collection',
                     @$_REQUEST['collection'],
-                    array('id' => 'collection-search'),
+                    ['id' => 'collection-search'],
                     get_table_options('Collection', null, array('include_no_collection' => true))
                 );
                 ?>
@@ -148,7 +165,7 @@ $formAttributes['method'] = 'GET';
                     echo $this->formSelect(
                         'user',
                         @$_REQUEST['user'],
-                        array('id' => 'user-search'),
+                        ['id' => 'user-search'],
                         get_table_options('User')
                     );
                     ?>
@@ -208,55 +225,3 @@ $formAttributes['method'] = 'GET';
             Omeka.Search.activateSearchButtons();
         });
     </script>
-
-<?php
-
-function filter_select_options($input)
-{
-    $whitelist = [
-        'Select Below',
-        'Has Part',
-        'Description',
-        'Coverage',
-        'Extent',
-        'Type',
-        'Title',
-        'Abstract',
-        'Creator',
-        'Date',
-        'Subject',
-        'Condition',
-        'Place',
-        'Medium',
-        'Dimensions',
-        'Genre',
-        'Identifier'
-    ];
-
-    return array_filter(
-        $input,
-        function ($value) use ($whitelist) {
-            return in_array(rtrim($value), $whitelist, true);
-        }
-    );
-}
-
-function rename_select_options($input)
-{
-    $rename_map = [
-        'Has Part'    => 'Transcription',
-        'Description' => 'Condition',
-        'Coverage'    => 'Place',
-        'Extent'      => 'Dimensions',
-        'Type'        => 'Genre'
-    ];
-
-    $keys = array_keys($input);
-
-    foreach ($keys as $key) {
-        $value = $input[$key];
-        $input[$key] = isset($rename_map[$value]) ? $rename_map[$value] : $value;
-    }
-
-    return $input;
-}
