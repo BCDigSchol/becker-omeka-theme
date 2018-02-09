@@ -1646,6 +1646,10 @@ form#search-form.homepage-search  {
   right: 0;
 }
 
+#advanced-search-form select, #advanced-search-form input {
+  margin-right: .25em;
+  padding: 0 6px;
+}
 
 form#search-form.homepage-search input#query {
   width: 100%;

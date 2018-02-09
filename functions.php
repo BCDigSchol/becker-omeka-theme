@@ -1,6 +1,7 @@
 <?php
 
-function centerrow_display_featured_exhibit() {
+function centerrow_display_featured_exhibit()
+{
     $html = '';
     $featuredExhibit = exhibit_builder_random_featured_exhibit();
     if ($featuredExhibit) {
@@ -10,7 +11,8 @@ function centerrow_display_featured_exhibit() {
     return $html;
 }
 
-function bc_label_table_options($options, $default = null) {
+function bc_label_table_options($options, $default = null)
+{
     $option_list = label_table_options($options, $default);
     unset($option_list['']);
     return $option_list;
@@ -29,6 +31,7 @@ function bc_filter_select_options($input, $whitelist)
 function bc_rename_select_options($input)
 {
     $rename_map = [
+        'Creator'     => 'Artist',
         'Has Part'    => 'Transcription',
         'Description' => 'Condition',
         'Coverage'    => 'Place',
