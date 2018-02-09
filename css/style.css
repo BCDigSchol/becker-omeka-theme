@@ -1661,3 +1661,14 @@ form#search-form.homepage-search input#query {
       margin-top: 0;
   }
 }
+
+.hTagcloud {
+  padding-top: 1em;
+  -moz-column-width: 225px;
+  -webkit-column-width: 225px;
+  column-width: 225px;
+}
+
+ul.popularity {
+  margin-top: 0;
+}
