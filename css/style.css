@@ -604,7 +604,7 @@ textarea {
 
   /* @end */
   /* @group ----- Navigation ----- */
-  
+
   footer #bottom-nav {
     max-width: 1100px;
     margin: auto;
@@ -1500,7 +1500,7 @@ textarea {
 }
 
 
-/* CHP Custom edits 
+/* CHP Custom edits
 Some of these are overwrites, others are new classes
 */
 
@@ -1621,11 +1621,39 @@ Some of these are overwrites, others are new classes
     padding: 20px;
     background-color: rgba(255,255,255, 1);
     text-align: justify;
-  }  
+  }
 }
 
 /* WAR MAP */
 
 #map p iframe {
   width: 100%;
+}
+
+/* Homepage search */
+form#search-form.homepage-search  {
+  right: initial;
+  position: relative;
+  width: 45%;
+  margin: 4em auto 0 auto;
+}
+
+#search-form {
+  border-right: 1px #C72E2E solid;
+}
+
+#search-form.open {
+  right: 0;
+}
+
+
+form#search-form.homepage-search input#query {
+  width: 100%;
+}
+
+@media screen and (max-width: 640px) {
+  form#search-form.homepage-search {
+      width: 85%;
+      margin-top: 0;
+  }
 }

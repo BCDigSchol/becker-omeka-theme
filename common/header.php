@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="<?php echo get_html_lang(); ?>">
+<?php
+
+$is_home_page = isset($bodyid) && $bodyid === 'home';
+
+
+?><!DOCTYPE html>
+<html lang="<?= get_html_lang(); ?>">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes" />
-    <?php if ( $description = option('description')): ?>
-    <meta name="description" content="<?php echo $description; ?>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes"/>
+    <?php if ($description = option('description')): ?>
+        <meta name="description" content="<?= $description; ?>"/>
     <?php endif; ?>
     <?php
     if (isset($title)) {
@@ -12,12 +17,12 @@
     }
     $titleParts[] = option('site_title');
     ?>
-    <title><?php echo implode(' &middot; ', $titleParts); ?></title>
+    <title><?= implode(' &middot; ', $titleParts); ?></title>
 
-    <?php echo auto_discovery_link_tags(); ?>
+    <?= auto_discovery_link_tags(); ?>
 
     <!-- Plugin Stuff -->
-    <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
+    <?php fire_plugin_hook('public_head', array('view' => $this)); ?>
 
     <!-- Stylesheets -->
     <?php
@@ -35,42 +40,62 @@
     ?>
 </head>
 
-<?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
-    <a href="#content" id="skipnav"><?php echo __('Skip to main content'); ?></a>
-    <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
-    
-    <div id="wrap">
+<?= body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
+<a href="#content" id="skipnav"><?= __('Skip to main content'); ?></a>
+<?php fire_plugin_hook('public_body', array('view' => $this)); ?>
 
-        <header role="banner" id="hero">
+<div id="wrap">
 
-            <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-            
-            <div id="hero-wrapper">
+    <header role="banner" id="hero">
 
-                <div id="site-title"><?php echo link_to_home_page(theme_logo()); ?>
+        <?php fire_plugin_hook('public_header', array('view' => $this)); ?>
+
+        <div id="hero-wrapper">
+
+            <div id="site-title"><?= link_to_home_page(theme_logo()); ?>
                 <span class="site-subtitle">Drawings of the American Civil War</span>
-                </div>
-
-                <div id="search-container" role="search">
-                    <?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>
-                    <?php echo search_form(array('show_advanced' => true, 'form_attributes' => array('role' => 'search', 'class' => 'closed'))); ?>
-                    <?php else: ?>
-                    <?php echo search_form(array('form_attributes' => array('role' => 'search', 'class' => 'closed'))); ?>
-                    <?php endif; ?>
-                    <button type="button" class="search-toggle" title="<?php echo __('Toggle search'); ?>"></button>
-                </div>
             </div>
 
+            <?php if (!$is_home_page): ?>
+                <div id="search-container" role="search">
+                    <?php if (get_theme_option('use_advanced_search') === null || get_theme_option(
+                            'use_advanced_search'
+                        )): ?>
+                        <?= search_form(
+                            array(
+                                'show_advanced'   => true,
+                                'form_attributes' => array('role' => 'search', 'class' => 'open')
+                            )
+                        ); ?>
+                    <?php else: ?>
+                        <?= search_form(
+                            array(
+                                'show_advanced'   => false,
+                                'form_attributes' => array('role' => 'search', 'class' => 'open')
+                            )
+                        ); ?>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
 
-            <nav id="top-nav" role="navigation">
-                <?php echo public_nav_main(); ?>
-            </nav>
+        <nav id="top-nav" role="navigation">
+            <?= public_nav_main(); ?>
+        </nav>
 
-            <?php echo theme_header_image(); ?>
+        <?= theme_header_image(); ?>
 
 
-        </header>
+        <?php if ($is_home_page): ?>
+            <?= search_form(
+                array(
+                    'show_advanced'   => false,
+                    'form_attributes' => array('role' => 'search', 'class' => 'open homepage-search')
+                )
+            ); ?>
+        <?php endif; ?>
+    </header>
 
-        <article id="content" role="main">
+    <article id="content" role="main">
 
-            <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>
+        <?php fire_plugin_hook('public_content_top', array('view' => $this)); ?>
