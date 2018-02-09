@@ -40,18 +40,6 @@ $select_whitelist = [
 ?>
 
     <form <?php echo tag_attributes($formAttributes); ?>>
-        <div id="search-keywords" class="field">
-            <?php echo $this->formLabel('keyword-search', __('Search for Keywords')); ?>
-            <div class="inputs">
-                <?php
-                echo $this->formText(
-                    'search',
-                    @$_REQUEST['search'],
-                    ['id' => 'keyword-search', 'size' => '40']
-                );
-                ?>
-            </div>
-        </div>
         <!--Changed field name-->
         <!-- again -->
         <div id="search-narrow-by-fields" class="field">
