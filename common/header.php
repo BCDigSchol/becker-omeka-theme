@@ -53,7 +53,7 @@ $is_home_page = isset($bodyid) && $bodyid === 'home';
         <div id="hero-wrapper">
 
             <div id="site-title"><?= link_to_home_page(theme_logo()); ?>
-                <span class="site-subtitle">Drawings of the American Civil War</span>
+                <span class="site-subtitle">Drawings of the American Civil War Era</span>
             </div>
 
             <?php if (!$is_home_page): ?>
