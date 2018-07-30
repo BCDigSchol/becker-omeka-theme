@@ -1,6 +1,6 @@
 (function ($) {
     function search_on_select(search_field_id, search_term) {
-        var search_base = 'https://library.bc.edu/becker/items/browse',
+        var search_base = 'http://beckercollection.bc.edu/items/browse',
             search_scope = 'advanced[0][type]=is exactly',
             search_type = 'advanced[0][element_id]=' + encodeURIComponent(search_field_id),
             search_value = 'advanced[0][terms]=' + encodeURIComponent(search_term),

@@ -14,9 +14,7 @@ $formAttributes['method'] = 'GET';
 
 $search_relation_options = [
     'is exactly'       => __('is exactly'),
-    'does not contain' => __('does not contain'),
-    'starts with'      => __('starts with'),
-    'ends with'        => __('ends with')
+    'does not contain' => __('does not contain')
 ];
 
 $select_whitelist = [
@@ -57,7 +55,7 @@ $battle_options = [
     "Peeble's Farm, Battle of, Va., 1864"                                                                                                                                                                             => "Peeble's Farm, Battle of, Va., 1864",
     "Petersburg (Va.)--History--Siege, 1864-1865"                                                                                                                                                                     => "Petersburg (Va.) Siege, 1864-1865",
     "Petersburg Crater, Battle of, Va., 1864"                                                                                                                                                                         => "Petersburg Crater, Battle of, Va., 1864",
-    "https://library.bc.edu/becker/search?query=Port+Hudson&query_type=boolean&record_types%5B%5D=Item&record_types%5B%5D=File&record_types%5B%5D=Collection&record_types%5B%5D=SimplePagesPage&submit_search=Search" => "Port Hudson (La.) Siege, 1863",
+    "https://library.bc.edu/search?query=Port+Hudson&query_type=boolean&record_types%5B%5D=Item&record_types%5B%5D=File&record_types%5B%5D=Collection&record_types%5B%5D=SimplePagesPage&submit_search=Search" => "Port Hudson (La.) Siege, 1863",
     "Rich Mountain, Battle of, W. Va., 1861"                                                                                                                                                                          => "Rich Mountain, Battle of, W. Va., 1861",
     "Richmond (Va.)--History--Siege, 1864-1865--Pictorial works."                                                                                                                                                     => "Richmond (Va.) Siege, 1864-1865",
     "Roanoke Island (N.C.)--History--Capture, 1862"                                                                                                                                                                   => "Roanoke Island (N.C.) Capture, 1862",
