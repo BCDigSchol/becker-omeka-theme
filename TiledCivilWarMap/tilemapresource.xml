@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <TileMap version="1.0.0" tilemapservice="http://tms.osgeo.org/1.0.0">
+      <Title>21592.tif</Title>
+      <Abstract></Abstract>
+      <SRS>EPSG:3857</SRS>
+      <BoundingBox minx="-132.31046073780112" miny="16.50136861044542" maxx="-64.36594710085349" maxy="52.91610241788969"/>
+      <Origin x="-132.31046073780112" y="16.50136861044542"/>
+      <TileFormat width="256" height="256" mime-type="image/png" extension="png"/>
+      <TileSets profile="mercator">
+        <TileSet href="2" units-per-pixel="39135.75847500000236" order="2"/>
+        <TileSet href="3" units-per-pixel="19567.87923750000118" order="3"/>
+        <TileSet href="4" units-per-pixel="9783.93961875000059" order="4"/>
+        <TileSet href="5" units-per-pixel="4891.96980937500030" order="5"/>
+        <TileSet href="6" units-per-pixel="2445.98490468750015" order="6"/>
+        <TileSet href="7" units-per-pixel="1222.99245234375007" order="7"/>
+      </TileSets>
+    </TileMap>
+    
